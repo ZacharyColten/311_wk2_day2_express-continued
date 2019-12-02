@@ -1,9 +1,22 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const app = express();
+const contactsRouter = require('./routes/contacts.js')
+const commentsRouter = require('./routes/comments.js')
+const productsRouter = require('./routes/products.js')
+const vehiclesRouter = require('./routes/vehicles.js')
+const app = express(); 
+const contacts = require('./data/contacts.js')
 
+app.use(express.static('public'))
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(contactsRouter)
+app.use(commentsRouter)
+app.use(productsRouter)
+app.use(vehiclesRouter)
+console.log(contacts)
 const port = process.env.PORT || 4001;
 
 app.listen(port, () => {
- console.log(`Web server is listening on port ${port}!`);
+  console.log(`Web server is listening on port ${port}!`);
 });
