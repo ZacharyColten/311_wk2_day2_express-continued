@@ -4,8 +4,7 @@ const contactsRouter = require('./routes/contacts.js')
 const commentsRouter = require('./routes/comments.js')
 const productsRouter = require('./routes/products.js')
 const vehiclesRouter = require('./routes/vehicles.js')
-const app = express(); 
-const contacts = require('./data/contacts.js')
+const app = express();
 
 app.use(express.static('public'))
 app.use(bodyParser.json())
@@ -14,7 +13,6 @@ app.use(contactsRouter)
 app.use(commentsRouter)
 app.use(productsRouter)
 app.use(vehiclesRouter)
-console.log(contacts)
 const port = process.env.PORT || 4001;
 
 app.listen(port, () => {
